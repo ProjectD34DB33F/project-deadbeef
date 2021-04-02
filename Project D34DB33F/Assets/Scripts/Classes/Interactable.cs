@@ -24,4 +24,10 @@ public class Interactable : MonoBehaviour
             Interact();
         }
     }
+
+    void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, radius);
+    }
 }
