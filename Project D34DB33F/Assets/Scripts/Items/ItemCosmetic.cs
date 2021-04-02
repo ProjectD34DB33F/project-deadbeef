@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ItemGear : Item
+public class ItemCosmetic : Item
 {
-    Stat[] stats = new Stat[5];
+
 }

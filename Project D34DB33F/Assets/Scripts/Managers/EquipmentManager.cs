@@ -15,6 +15,8 @@ public class EquipmentManager : MonoBehaviour
 
     #endregion
 
+    ItemGear[] currentEquipment;
+
     // Start is called before the first frame update
     void Start()
     {
