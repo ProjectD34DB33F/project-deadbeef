@@ -8,6 +8,9 @@ public class PlayerController : MonoBehaviour
     //[SerializeField] Joystick joystick;
     [SerializeField] float speed = 6f;
 
+    [SerializeField]
+    KeyCode KeyAddItem;
+
     // Start is called before the first frame update
     void Start()
     {

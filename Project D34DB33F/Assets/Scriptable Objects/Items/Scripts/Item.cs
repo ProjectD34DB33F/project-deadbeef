@@ -11,14 +11,29 @@ public class Item : ScriptableObject
         Rare
     }
 
+    public enum Tipo
+    {
+        item,
+        empty
+    }
+
     [SerializeField]
-    string Nome;
+    public string nome;
 
     [SerializeField]
     Rarity raridade;
 
     [SerializeField]
     Sprite icon;
+
+    [SerializeField]
+    public Tipo tipoItem;
+
+    [SerializeField]
+    public bool isStackable;
+
+    [SerializeField]
+    public GameObject prefab;
 
     string uID;
 

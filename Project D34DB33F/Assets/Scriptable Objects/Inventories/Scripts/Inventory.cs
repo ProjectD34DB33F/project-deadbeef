@@ -6,19 +6,11 @@ using UnityEngine;
 public class Inventory : ScriptableObject
 {
     [SerializeField]
-    protected int maxSlots;
+    public int maxSlots;
 
     [SerializeField]
-    protected int unlockedSlots;
+    public int unlockedSlots;
 
-
-
-
-
-    protected void displayInventario()
-    {
-
-    }
 }
 
 [System.Serializable]
@@ -37,7 +29,32 @@ public class SlotInventario
         this.quantidadeMax = quantidadeMaxima;
         this.slotLocked = slotIsLocked;
         this.slotAceitaStacks = slotAceitaStacks;
+    }
 
+    public void adicionarQuantidade(int quantidade)
+    {
+        if(quantidade + this.quantidade >= this.quantidadeMax)
+        {
 
+        }
+        else
+        {
+            this.quantidade += quantidade;
+        }
+
+    }
+
+    public void trocarItem(Item item, int quantidade)
+    {
+        this.item = item;
+        this.quantidade = quantidade;
+        if(item.isStackable)
+        {
+            this.slotAceitaStacks = true;
+        }
+        else
+        {
+            this.slotAceitaStacks = false;
+        }
     }
 }

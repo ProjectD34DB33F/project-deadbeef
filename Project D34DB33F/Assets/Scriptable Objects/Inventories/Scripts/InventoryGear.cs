@@ -12,3 +12,6 @@ public class InventoryGear : Inventory
         List<Item> items = new List<Item>();
     }
 }
+
+
+
