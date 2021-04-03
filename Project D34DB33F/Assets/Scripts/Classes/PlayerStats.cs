@@ -13,6 +13,14 @@ public class PlayerStats : CharacterStats
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            TakeDamage(10);
+        }
+
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            UseAbility(10);
+        }
     }
 }
