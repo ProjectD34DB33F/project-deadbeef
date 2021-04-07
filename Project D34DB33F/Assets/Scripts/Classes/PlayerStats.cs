@@ -1,16 +1,14 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerStats : CharacterStats
 {
     private bool CanTakeDamage = true;
 
-<<<<<<< HEAD
     [SerializeField] Text textHP;
     [SerializeField] Text textRe;
 
-=======
->>>>>>> parent of cc57599 (Merge branch 'weebs-united' of https://github.com/ProjectD34DB33F/project-deadbeef into weebs-united)
     // Start is called before the first frame update
     private void Start()
     {
