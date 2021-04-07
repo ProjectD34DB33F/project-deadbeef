@@ -1,19 +1,20 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class PlayerStats : CharacterStats
 {
     private bool CanTakeDamage = true;
 
+<<<<<<< HEAD
     [SerializeField] Text textHP;
     [SerializeField] Text textRe;
 
+=======
+>>>>>>> parent of cc57599 (Merge branch 'weebs-united' of https://github.com/ProjectD34DB33F/project-deadbeef into weebs-united)
     // Start is called before the first frame update
     private void Start()
     {
-        textHP.text = currentHp + " / " + maxHp.GetValue();
-        textRe.text = currentRe + " / " + maxRe.GetValue();
+
     }
 
     // Update is called once per frame
@@ -22,13 +23,11 @@ public class PlayerStats : CharacterStats
         if (Input.GetKeyDown(KeyCode.T))
         {
             TakeDamage(10);
-            textHP.text = currentHp + " / " + maxHp.GetValue();
         }
 
         if (Input.GetKeyDown(KeyCode.F))
         {
             UseAbility(10);
-            textRe.text = currentRe + " / " + maxRe.GetValue();
         }
     }
 
