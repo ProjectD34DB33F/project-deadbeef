@@ -1,17 +1,18 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerStats : CharacterStats
 {
+    private bool CanTakeDamage = true;
+
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
 
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         if (Input.GetKeyDown(KeyCode.T))
         {
@@ -22,5 +23,25 @@ public class PlayerStats : CharacterStats
         {
             UseAbility(10);
         }
+    }
+
+    private void OnCollisionStay(Collision collision)
+    {
+        if (collision.gameObject.tag == "Enemy")
+        {
+            if (CanTakeDamage)
+            {
+                StartCoroutine(ContinuousDamage());
+                TakeDamage(10);
+                SoundTouched.soundTch.PlayDeathSound();
+            }
+        }
+    }
+
+    private IEnumerator ContinuousDamage()
+    {
+        CanTakeDamage = false;
+        yield return new WaitForSeconds(1);
+        CanTakeDamage = true;
     }
 }
