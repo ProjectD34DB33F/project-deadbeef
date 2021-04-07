@@ -4,10 +4,7 @@ using UnityEngine.UI;
 
 public class PlayerStats : CharacterStats
 {
-    private bool CanTakeDamage = true;
-
-    [SerializeField] Text textHP;
-    [SerializeField] Text textRe;
+    bool canTakeDamage = true;
 
     // Start is called before the first frame update
     private void Start()
@@ -18,22 +15,14 @@ public class PlayerStats : CharacterStats
     // Update is called once per frame
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.T))
-        {
-            TakeDamage(10);
-        }
-
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            UseAbility(10);
-        }
+        
     }
 
     private void OnCollisionStay(Collision collision)
     {
         if (collision.gameObject.tag == "Enemy")
         {
-            if (CanTakeDamage)
+            if (canTakeDamage)
             {
                 StartCoroutine(ContinuousDamage());
                 TakeDamage(10);
@@ -44,8 +33,8 @@ public class PlayerStats : CharacterStats
 
     private IEnumerator ContinuousDamage()
     {
-        CanTakeDamage = false;
+        canTakeDamage = false;
         yield return new WaitForSeconds(1);
-        CanTakeDamage = true;
+        canTakeDamage = true;
     }
 }

@@ -14,11 +14,11 @@ public class CharacterStats : MonoBehaviour
     {
         currentHp = maxHp.GetValue();
         healthBar.SetMaxHealth(maxHp.GetValue());
-        healthBar.SetHealth(currentHp);
+        healthBar.SetHealth(currentHp, maxHp.GetValue());
 
         currentRe = maxRe.GetValue();
         resourceBar.SetMaxResource(maxRe.GetValue());
-        resourceBar.SetResource(currentRe);
+        resourceBar.SetResource(currentRe, maxRe.GetValue());
     }
 
     public void TakeDamage(int damage)
@@ -26,7 +26,7 @@ public class CharacterStats : MonoBehaviour
         currentHp -= damage;
         Debug.Log(transform.name + " takes " + damage + " damage.");
         Debug.Log("Current HP: " + currentHp);
-        healthBar.SetHealth(currentHp);
+        healthBar.SetHealth(currentHp, maxHp.GetValue());
 
         if (currentHp <= 0)
         {
@@ -37,7 +37,7 @@ public class CharacterStats : MonoBehaviour
     public void UseAbility(int resource)
     {
         currentRe -= resource;
-        resourceBar.SetResource(currentRe);
+        resourceBar.SetResource(currentRe, maxRe.GetValue());
 
         if (currentRe <= 0)
         {
@@ -47,6 +47,6 @@ public class CharacterStats : MonoBehaviour
 
     public virtual void Die()
     {
-        //What to do when player dies
+        //What to do when character dies
     }
 }

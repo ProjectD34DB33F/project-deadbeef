@@ -32,7 +32,4 @@ public class SoundTouched : MonoBehaviour
         randomDeathSound = Random.Range(0, 2);
         audioSrc.PlayOneShot(deathSound[randomDeathSound]);
     }
-
-
-
 }
