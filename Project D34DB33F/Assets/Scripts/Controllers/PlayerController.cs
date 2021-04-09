@@ -14,6 +14,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float bulletForce = 20f;
     [SerializeField] float attackSpeed = 0.3f;
 
+    public CharacterStats player;
+
     float gravity = -9.81f;
     float groundDistance = 0.4f;
 
@@ -71,9 +73,13 @@ public class PlayerController : MonoBehaviour
         {
             Quaternion lookRotation = Quaternion.LookRotation(new Vector3(joystickAttack.Horizontal, 0, joystickAttack.Vertical));
             transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5f);
-
             if (canAttack)
             {
+                if (player.currentRe < 10)
+                {
+                    return;
+                }
+                player.UseAbility(10);
                 GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
 
                 Rigidbody rb = bullet.GetComponent<Rigidbody>();
@@ -85,7 +91,7 @@ public class PlayerController : MonoBehaviour
     }
 
     IEnumerator AttackSpeed()
-    {
+    {   
         canAttack = false;
         yield return new WaitForSeconds(attackSpeed);
         canAttack = true;

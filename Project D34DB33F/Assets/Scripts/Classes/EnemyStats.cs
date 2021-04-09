@@ -16,12 +16,12 @@ public class EnemyStats : CharacterStats
         
     }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.tag == "PlayerAttack")
-        {
-            TakeDamage(10);
-            SoundTouched.soundTch.PlayDeathSound();
-        }
-    }
+    //private void OnCollisionEnter(Collision collision)
+    //{
+    //    if (collision.gameObject.tag == "PlayerAttack")
+    //    {
+    //        TakeDamage(10);
+    //        SoundTouched.soundTch.PlayDeathSound();
+    //    }
+    //}
 }

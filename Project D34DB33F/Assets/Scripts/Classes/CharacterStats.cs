@@ -36,12 +36,36 @@ public class CharacterStats : MonoBehaviour
 
     public void UseAbility(int resource)
     {
+        if (currentRe == maxRe.GetValue())
+        {
+            InvokeRepeating("GainRe", 0.0f, 0.5f);
+        }       
+
         currentRe -= resource;
         resourceBar.SetResource(currentRe, maxRe.GetValue());
 
         if (currentRe <= 0)
         {
-            currentRe = maxRe.GetValue();
+            currentRe = 0;
+        }
+    }
+
+    public void GainRe()
+    {
+        if (currentRe < maxRe.GetValue())
+        {            
+            currentRe += 1;
+            Debug.Log(transform.name + " gains " + 1 + " MP.");
+            Debug.Log("Current MP: " + currentRe);
+            if (currentRe > maxRe.GetValue())
+            {
+                currentRe = maxRe.GetValue();
+            }
+            resourceBar.SetResource(currentRe, maxRe.GetValue());
+        }
+        if (currentRe == maxRe.GetValue())
+        {
+            CancelInvoke("GainRe");
         }
     }
 

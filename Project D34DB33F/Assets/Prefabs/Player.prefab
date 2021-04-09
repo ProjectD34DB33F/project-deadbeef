@@ -179,17 +179,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 6210053797586319677}
-  groundCheck: {fileID: 0}
-  firePoint: {fileID: 0}
+  groundCheck: {fileID: 5370174917499375054}
+  firePoint: {fileID: 4975642089019124927}
   groundMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 256
   joystickMove: {fileID: 0}
   joystickAttack: {fileID: 0}
-  bulletPrefab: {fileID: 0}
+  bulletPrefab: {fileID: 5107704719221434472, guid: c4fe4001819213443aae258dbf5c80ee,
+    type: 3}
   speed: 6
   bulletForce: 20
   attackSpeed: 0.3
+  player: {fileID: 6210053797586319672}
 --- !u!114 &6210053797586319672
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -208,8 +210,6 @@ MonoBehaviour:
     baseValue: 300
   healthBar: {fileID: 0}
   resourceBar: {fileID: 0}
-  textHP: {fileID: 0}
-  textRe: {fileID: 0}
 --- !u!1 &7683117700228402077
 GameObject:
   m_ObjectHideFlags: 0
