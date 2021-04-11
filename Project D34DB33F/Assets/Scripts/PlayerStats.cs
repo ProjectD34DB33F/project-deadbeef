@@ -15,10 +15,10 @@ public class PlayerStats : CharacterStats
     // Update is called once per frame
     private void Update()
     {
-        //if (currentHp <= 0)
-        //{
-        //    Destroy(gameObject);
-        //}
+        if (currentHp <= 0)
+        {
+            Die();
+        }
     }
 
     private void OnCollisionStay(Collision collision)
@@ -40,5 +40,4 @@ public class PlayerStats : CharacterStats
         yield return new WaitForSeconds(1);
         canTakeDamage = true;
     }
-
 }

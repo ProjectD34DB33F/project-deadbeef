@@ -4,18 +4,32 @@ using UnityEngine.UI;
 public class ResourceBar : MonoBehaviour
 {
     [SerializeField] Slider slider;
-    [SerializeField] Text textRe;
+
+    [SerializeField] Text textRe = null;
+
+    private void Start()
+    {
+        
+    }
 
     public void SetMaxResource(int resource)
     {
         slider.maxValue = resource;
         slider.value = resource;
-        textRe.text = resource + " / " + resource;
+
+        if (textRe != null)
+        {
+            textRe.text = resource + " / " + resource;
+        }
     }
 
     public void SetResource(int currentRe, int maxRe)
     {
         slider.value = currentRe;
-        textRe.text = currentRe + " / " + maxRe;
+
+        if (textRe != null)
+        {
+            textRe.text = currentRe + " / " + maxRe;
+        }
     }
 }

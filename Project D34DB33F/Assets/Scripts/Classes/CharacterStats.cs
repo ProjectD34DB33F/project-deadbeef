@@ -8,7 +8,7 @@ public class CharacterStats : MonoBehaviour
     public Stat maxRe;
 
     [SerializeField] HealthBar healthBar;
-    [SerializeField] ResourceBar resourceBar;
+    [SerializeField] ResourceBar resourceBar = null;
 
     private void Awake()
     {
@@ -16,16 +16,18 @@ public class CharacterStats : MonoBehaviour
         healthBar.SetMaxHealth(maxHp.GetValue());
         healthBar.SetHealth(currentHp, maxHp.GetValue());
 
-        currentRe = maxRe.GetValue();
-        resourceBar.SetMaxResource(maxRe.GetValue());
-        resourceBar.SetResource(currentRe, maxRe.GetValue());
+        if (resourceBar != null)
+        {
+            currentRe = maxRe.GetValue();
+            resourceBar.SetMaxResource(maxRe.GetValue());
+            resourceBar.SetResource(currentRe, maxRe.GetValue());
+        }
     }
 
     public void TakeDamage(int damage)
     {
         currentHp -= damage;
-        Debug.Log(transform.name + " takes " + damage + " damage.");
-        Debug.Log("Current HP: " + currentHp);
+        
         healthBar.SetHealth(currentHp, maxHp.GetValue());
 
         if (currentHp <= 0)
@@ -38,8 +40,8 @@ public class CharacterStats : MonoBehaviour
     {
         if (currentRe == maxRe.GetValue())
         {
-            InvokeRepeating("GainRe", 0.0f, 0.5f);
-        }       
+            InvokeRepeating("GainRe", 2f, 0.125f);
+        }
 
         currentRe -= resource;
         resourceBar.SetResource(currentRe, maxRe.GetValue());
@@ -55,14 +57,14 @@ public class CharacterStats : MonoBehaviour
         if (currentRe < maxRe.GetValue())
         {            
             currentRe += 1;
-            Debug.Log(transform.name + " gains " + 1 + " MP.");
-            Debug.Log("Current MP: " + currentRe);
+            
             if (currentRe > maxRe.GetValue())
             {
                 currentRe = maxRe.GetValue();
             }
             resourceBar.SetResource(currentRe, maxRe.GetValue());
         }
+        
         if (currentRe == maxRe.GetValue())
         {
             CancelInvoke("GainRe");
@@ -72,5 +74,6 @@ public class CharacterStats : MonoBehaviour
     public virtual void Die()
     {
         //What to do when character dies
+        Destroy(gameObject);
     }
 }
