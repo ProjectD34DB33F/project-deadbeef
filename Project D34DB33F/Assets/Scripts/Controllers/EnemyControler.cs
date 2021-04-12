@@ -5,32 +5,35 @@ using UnityEngine.AI;
 
 public class EnemyControler : MonoBehaviour
 {
-
     public float lookRadius = 10f;
 
-    Transform target;
+    Transform target = null;
     NavMeshAgent agent;
 
     // Start is called before the first frame update
     void Start()
     {
-        target = PlayerManager.instance.player.transform;
+        if (PlayerManager.instance.player != null)
+            target = PlayerManager.instance.player.transform;
         agent = GetComponent<NavMeshAgent>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        float distance = Vector3.Distance(target.position, transform.position);
-
-        if (distance <= lookRadius)
+        if (target != null)
         {
-            agent.SetDestination(target.position);
+            float distance = Vector3.Distance(target.position, transform.position);
 
-            if (distance <= agent.stoppingDistance)
+            if (distance <= lookRadius)
             {
-                // Attack Target
-                FaceTarget();
+                agent.SetDestination(target.position);
+
+                if (distance <= agent.stoppingDistance)
+                {
+                    // Attack Target
+                    FaceTarget();
+                }
             }
         }
     }

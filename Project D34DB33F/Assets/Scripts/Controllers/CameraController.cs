@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    [SerializeField] private Transform player;
     [SerializeField] Vector3 offset;
     [SerializeField] float pitch = 1f;
 
@@ -12,6 +11,9 @@ public class CameraController : MonoBehaviour
     private List<IsObstacle> currentObstacles;
     private List<IsObstacle> alreadyTransparent;
     */
+
+    Transform player = null;
+
     new Transform camera;
 
     private void Awake()
@@ -20,7 +22,8 @@ public class CameraController : MonoBehaviour
         currentObstacles = new List<IsObstacle>();
         alreadyTransparent = new List<IsObstacle>();
         */
-
+        if (PlayerManager.instance.player != null)
+            player = PlayerManager.instance.player.transform;
         camera = this.gameObject.transform;
     }
 
@@ -42,8 +45,11 @@ public class CameraController : MonoBehaviour
 
     private void LateUpdate()
     {
-        transform.position = player.position - offset;
-        transform.LookAt(player.position + Vector3.up * pitch);
+        if (player != null)
+        {
+            transform.position = player.position - offset;
+            transform.LookAt(player.position + Vector3.up * pitch);
+        }
     }
     /*
     private void GetObstacles()
